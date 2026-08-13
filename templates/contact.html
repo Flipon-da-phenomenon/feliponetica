@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Contact | English Course</title>
+
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+
+<body>
+
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <a href="{{ url_for('home') }}" class="logo">
+            English<span>Course</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('lessons') }}">Lessons</a>
+            <a href="{{ url_for('course') }}">Course</a>
+            <a href="{{ url_for('vocab') }}">Vocabulary</a>
+
+            <a href="{{ url_for('feliponetica') }}">
+                Feliponetica
+            </a>
+
+            <a href="{{ url_for('live_classes') }}">
+                Live Classes
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<main class="main-container">
+
+
+    <header class="page-header">
+
+        <div class="eyebrow">
+            Get In Touch
+        </div>
+
+        <h1>
+            Contact
+        </h1>
+
+        <p>
+            Questions about the course, lessons, classes,
+            or technical support? Get in touch.
+        </p>
+
+    </header>
+
+
+    <section class="card-grid">
+
+
+        <article class="card">
+
+            <div class="card-icon">
+                ✉️
+            </div>
+
+            <h2>
+                Email
+            </h2>
+
+            <p>
+                Add your contact email here when you are ready
+                to make it public.
+            </p>
+
+            <a href="#" class="button">
+                Contact Us
+            </a>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="card-icon">
+                💬
+            </div>
+
+            <h2>
+                Questions
+            </h2>
+
+            <p>
+                Use this section for general questions about
+                lessons, vocabulary, classes, or the program.
+            </p>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="card-icon">
+                🛠️
+            </div>
+
+            <h2>
+                Technical Support
+            </h2>
+
+            <p>
+                Report problems with the website, vocabulary
+                drills, Feliponetica, or other learning tools.
+            </p>
+
+        </article>
+
+
+    </section>
+
+
+</main>
+
+
+<footer class="footer">
+
+    English Course · Contact
+
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Live Classes | English Course</title>
+
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+
+<body>
+
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <a href="{{ url_for('home') }}" class="logo">
+            English<span>Course</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('lessons') }}">Lessons</a>
+            <a href="{{ url_for('course') }}">Course</a>
+            <a href="{{ url_for('vocab') }}">Vocabulary</a>
+
+            <a href="{{ url_for('feliponetica') }}">
+                Feliponetica
+            </a>
+
+            <a href="{{ url_for('live_classes') }}">
+                Live Classes
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<main class="main-container">
+
+
+    <header class="page-header">
+
+        <div class="eyebrow">
+            Learn Together
+        </div>
+
+        <h1>
+            Live Classes
+        </h1>
+
+        <p>
+            Join live English sessions for guided practice,
+            conversation, questions, and feedback.
+        </p>
+
+    </header>
+
+
+    <section class="card-grid">
+
+
+        <article class="card">
+
+            <div class="card-icon">
+                🎓
+            </div>
+
+            <h2>
+                Group Classes
+            </h2>
+
+            <p>
+                Practice English with other students in a
+                structured live environment.
+            </p>
+
+            <a href="#" class="button">
+                View Schedule
+            </a>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="card-icon">
+                💬
+            </div>
+
+            <h2>
+                Conversation
+            </h2>
+
+            <p>
+                Develop the ability to understand and respond
+                naturally in real conversations.
+            </p>
+
+            <a href="#" class="button">
+                View Classes
+            </a>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="card-icon">
+                📝
+            </div>
+
+            <h2>
+                Practice Sessions
+            </h2>
+
+            <p>
+                Reinforce grammar and vocabulary through
+                guided exercises and activities.
+            </p>
+
+            <a href="#" class="button">
+                View Sessions
+            </a>
+
+        </article>
+
+
+    </section>
+
+
+    <section class="info-section">
+
+        <h2>
+            Class Information
+        </h2>
+
+        <p>
+            Class schedules, meeting links, enrollment information,
+            and other details can be added here as the live-class
+            system develops.
+        </p>
+
+    </section>
+
+
+</main>
+
+
+<footer class="footer">
+
+    English Course · Live Classes
+
+</footer>
+
+
+</body>
+</html>

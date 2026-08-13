@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>About | English Course</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+
+<body>
+
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <a href="{{ url_for('home') }}" class="logo">
+            English<span>Course</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('lessons') }}">Lessons</a>
+            <a href="{{ url_for('course') }}">Course</a>
+            <a href="{{ url_for('vocab') }}">Vocabulary</a>
+
+            <a href="{{ url_for('feliponetica') }}">
+                Feliponetica
+            </a>
+
+            <a href="{{ url_for('live_classes') }}">
+                Live Classes
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<main class="main-container">
+
+
+    <header class="page-header">
+
+        <div class="eyebrow">
+            The Program
+        </div>
+
+        <h1>
+            About
+        </h1>
+
+        <p>
+            A practical English learning system designed to help
+            students understand how English actually works.
+        </p>
+
+    </header>
+
+
+    <section class="card-grid">
+
+
+        <article class="card">
+
+            <div class="card-icon">
+                📚
+            </div>
+
+            <h2>
+                Structured Learning
+            </h2>
+
+            <p>
+                English is introduced progressively, with new
+                vocabulary and structures building on what students
+                already know.
+            </p>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="card-icon">
+                🧠
+            </div>
+
+            <h2>
+                Real Retention
+            </h2>
+
+            <p>
+                Practice is designed around repeated exposure,
+                active recall, and meaningful use rather than
+                memorization alone.
+            </p>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="card-icon">
+                🗣️
+            </div>
+
+            <h2>
+                Real Communication
+            </h2>
+
+            <p>
+                The ultimate goal is not simply knowing grammar.
+                It is being able to use English naturally with
+                other people.
+            </p>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="card-icon">
+                🔊
+            </div>
+
+            <h2>
+                Pronunciation
+            </h2>
+
+            <p>
+                Pronunciation is treated as an essential part of
+                learning English rather than something added at
+                the end.
+            </p>
+
+        </article>
+
+
+    </section>
+
+
+</main>
+
+
+<footer class="footer">
+
+    English Course · About
+
+</footer>
+
+
+</body>
+</html>
