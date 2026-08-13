@@ -13,15 +13,15 @@ NLTK_DATA_PATH = "/opt/render/nltk_data"
 
 nltk.data.path.insert(0, NLTK_DATA_PATH)
 
-try:
-    nltk.data.find(
-        "taggers/averaged_perceptron_tagger_eng"
-    )
-except LookupError:
-    nltk.download(
-        "averaged_perceptron_tagger_eng",
-        download_dir=NLTK_DATA_PATH
-    )
+nltk.download(
+    "averaged_perceptron_tagger_eng",
+    download_dir=NLTK_DATA_PATH
+)
+
+nltk.download(
+    "cmudict",
+    download_dir=NLTK_DATA_PATH
+)
 
 
 g2p = G2p()
