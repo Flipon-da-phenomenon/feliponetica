@@ -70,27 +70,31 @@ CMU_TO_FELIPONETICA = {
 
 def convert_to_feliponetica(text):
 
-    words = text.split()
+    phonemes = g2p(text)
 
-    result = []
+    converted = []
 
-    for word in words:
+    for phone in phonemes:
 
-        phonemes = g2p(word)
+        # Keep spaces
+        if phone == " ":
+            converted.append(" ")
+            continue
 
-        converted = []
+        # Keep punctuation
+        if not re.match(r"^[A-Z]+[0-2]?$", phone):
+            converted.append(phone)
+            continue
 
-        for phone in phonemes:
+        # Remove stress number
+        phone = re.sub(r"\d", "", phone)
 
-            phone = re.sub(r"\d", "", phone)
+        # Convert CMU phoneme
+        converted.append(
+            CMU_TO_FELIPONETICA.get(phone, phone)
+        )
 
-            converted.append(
-                CMU_TO_FELIPONETICA.get(phone, phone)
-            )
-
-        result.append("".join(converted))
-
-    return " ".join(result)
+    return "".join(converted)
 
 
 # ============================================================
