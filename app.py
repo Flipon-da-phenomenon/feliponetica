@@ -1,6 +1,28 @@
-from g2p_en import G2p
-from flask import Flask, render_template, request
+import nltk
 import re
+
+from flask import Flask, render_template, request
+from g2p_en import G2p
+
+
+# ============================================================
+# NLTK DATA
+# ============================================================
+
+NLTK_DATA_PATH = "/opt/render/nltk_data"
+
+nltk.data.path.insert(0, NLTK_DATA_PATH)
+
+try:
+    nltk.data.find(
+        "taggers/averaged_perceptron_tagger_eng"
+    )
+except LookupError:
+    nltk.download(
+        "averaged_perceptron_tagger_eng",
+        download_dir=NLTK_DATA_PATH
+    )
+
 
 g2p = G2p()
 
