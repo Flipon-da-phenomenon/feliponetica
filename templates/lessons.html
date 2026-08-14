@@ -2,41 +2,300 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Lessons | English Course</title>
 
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/styles.css') }}">
+
+
+    <style>
+
+        /* =====================================================
+           PDF VIEWER
+           ===================================================== */
+
+        .pdf-overlay {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            background:
+                rgba(0, 40, 100, 0.65);
+
+            backdrop-filter: blur(8px);
+
+            -webkit-backdrop-filter: blur(8px);
+
+            padding: 25px;
+        }
+
+
+        .pdf-overlay.active {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .pdf-window {
+
+            width: min(1200px, 96vw);
+
+            height: min(900px, 94vh);
+
+            background: white;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 30px 80px
+                rgba(0, 40, 100, 0.35);
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        /* =====================================================
+           PDF HEADER
+           ===================================================== */
+
+        .pdf-header {
+
+            min-height: 65px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding:
+                0 20px;
+
+            background: white;
+
+            border-bottom:
+                1px solid #dce8f5;
+        }
+
+
+        .pdf-title {
+
+            color: #0028c7;
+
+            font-size: 18px;
+
+            font-weight: 800;
+        }
+
+
+        .pdf-close {
+
+            width: 42px;
+
+            height: 42px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #ff5b41;
+
+            color: white;
+
+            font-size: 24px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: 0.2s ease;
+        }
+
+
+        .pdf-close:hover {
+
+            transform: scale(1.08);
+
+            background: #e94730;
+        }
+
+
+        /* =====================================================
+           PDF FRAME
+           ===================================================== */
+
+        .pdf-frame {
+
+            width: 100%;
+
+            height: 100%;
+
+            border: none;
+
+            background: #f4f8fc;
+        }
+
+
+        /* =====================================================
+           LESSON CARD
+           ===================================================== */
+
+        .lesson-card {
+
+            min-height: 280px;
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .lesson-card .button {
+
+            margin-top: auto;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           EMPTY STATE
+           ===================================================== */
+
+        .no-lessons {
+
+            grid-column: 1 / -1;
+
+            padding: 60px;
+
+            text-align: center;
+
+            border-radius: 25px;
+
+            background: white;
+
+            color: #555;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0, 40, 100, 0.12);
+        }
+
+
+        /* =====================================================
+           MOBILE
+           ===================================================== */
+
+        @media (max-width: 700px) {
+
+            .pdf-overlay {
+
+                padding: 10px;
+            }
+
+
+            .pdf-window {
+
+                width: 100%;
+
+                height: 96vh;
+
+                border-radius: 14px;
+            }
+
+
+            .pdf-title {
+
+                font-size: 15px;
+            }
+
+        }
+
+    </style>
+
 </head>
 
+
 <body>
+
+
+<!-- =========================================================
+     NAVIGATION
+     ========================================================= -->
 
 <nav class="navbar">
 
     <div class="nav-container">
 
-        <a href="{{ url_for('home') }}" class="logo">
+
+        <a
+            href="{{ url_for('home') }}"
+            class="logo">
+
             English<span>Course</span>
+
         </a>
+
 
         <div class="nav-links">
 
-            <a href="{{ url_for('home') }}">Home</a>
 
-            <a href="{{ url_for('lessons') }}">Lessons</a>
+            <a href="{{ url_for('home') }}">
+                Home
+            </a>
 
-            <a href="{{ url_for('course') }}">Course</a>
 
-            <a href="{{ url_for('vocab') }}">Vocabulary</a>
+            <a href="{{ url_for('lessons') }}">
+                Lessons
+            </a>
+
+
+            <a href="{{ url_for('course') }}">
+                Course
+            </a>
+
+
+            <a href="{{ url_for('vocab') }}">
+                Vocabulary
+            </a>
+
 
             <a href="{{ url_for('feliponetica') }}">
                 Feliponetica
             </a>
 
+
             <a href="{{ url_for('live_classes') }}">
                 Live Classes
             </a>
+
 
         </div>
 
@@ -45,165 +304,182 @@
 </nav>
 
 
+<!-- =========================================================
+     MAIN
+     ========================================================= -->
+
 <main class="main-container">
+
 
     <header class="page-header">
 
+
         <div class="eyebrow">
+
             English Course
+
         </div>
 
+
         <h1>
+
             Lessons
+
         </h1>
 
+
         <p>
-            Build your English step by step through structured
-            grammar, vocabulary, pronunciation, and communication lessons.
+
+            Build your English step by step through
+            structured grammar, vocabulary,
+            pronunciation, and communication lessons.
+
         </p>
+
 
     </header>
 
 
+    <!-- =====================================================
+         LESSON GRID
+         ===================================================== -->
+
     <section class="card-grid">
 
 
-        <article class="card lesson-card">
+        {% if lessons %}
 
-            <div class="lesson-number">
-                LESSON 01
+
+            {% for lesson in lessons %}
+
+
+                <article class="card lesson-card">
+
+
+                    <div class="lesson-number">
+
+                        LESSON {{ "%02d" | format(loop.index) }}
+
+                    </div>
+
+
+                    <h3>
+
+                        {{ lesson
+                            | replace(".pdf", "")
+                            | replace("_", " ")
+                            | replace("-", " ")
+                        }}
+
+                    </h3>
+
+
+                    <p>
+
+                        Open this lesson and
+                        work through the material.
+
+                    </p>
+
+
+                    <a
+                        class="button"
+                        href="{{ url_for('lesson_pdf', filename=lesson) }}"
+                        target="_blank">
+
+                        Open Lesson →
+
+                    </a>
+
+
+                </article>
+
+
+            {% endfor %}
+
+
+        {% else %}
+
+
+            <div class="no-lessons">
+
+                <h2>
+                    No lessons yet.
+                </h2>
+
+
+                <p>
+                    Add PDF files to the
+                    <strong>lessons</strong>
+                    folder to make them appear here.
+                </p>
+
             </div>
 
-            <h3>
-                Foundations
-            </h3>
 
-            <p>
-                Build the basic structures that everything else
-                in English depends on.
-            </p>
-
-            <a href="#" class="button">
-                Open Lesson
-            </a>
-
-        </article>
-
-
-        <article class="card lesson-card">
-
-            <div class="lesson-number">
-                LESSON 02
-            </div>
-
-            <h3>
-                Essential Verbs
-            </h3>
-
-            <p>
-                Master the most important verbs and the structures
-                they create.
-            </p>
-
-            <a href="#" class="button">
-                Open Lesson
-            </a>
-
-        </article>
-
-
-        <article class="card lesson-card">
-
-            <div class="lesson-number">
-                LESSON 03
-            </div>
-
-            <h3>
-                Everyday Vocabulary
-            </h3>
-
-            <p>
-                Learn practical vocabulary through repeated,
-                meaningful use.
-            </p>
-
-            <a href="#" class="button">
-                Open Lesson
-            </a>
-
-        </article>
-
-
-        <article class="card lesson-card">
-
-            <div class="lesson-number">
-                LESSON 04
-            </div>
-
-            <h3>
-                Sentence Building
-            </h3>
-
-            <p>
-                Combine vocabulary and grammar to create
-                complete English sentences.
-            </p>
-
-            <a href="#" class="button">
-                Open Lesson
-            </a>
-
-        </article>
-
-
-        <article class="card lesson-card">
-
-            <div class="lesson-number">
-                LESSON 05
-            </div>
-
-            <h3>
-                Tenses
-            </h3>
-
-            <p>
-                Understand how English expresses time and
-                how the different tense systems connect.
-            </p>
-
-            <a href="#" class="button">
-                Open Lesson
-            </a>
-
-        </article>
-
-
-        <article class="card lesson-card">
-
-            <div class="lesson-number">
-                LESSON 06
-            </div>
-
-            <h3>
-                Communication
-            </h3>
-
-            <p>
-                Move from isolated sentences toward natural
-                communication.
-            </p>
-
-            <a href="#" class="button">
-                Open Lesson
-            </a>
-
-        </article>
+        {% endif %}
 
 
     </section>
 
+
 </main>
 
+
+<!-- =========================================================
+     PDF POPUP
+     ========================================================= -->
+
+<div
+    id="pdfOverlay"
+    class="pdf-overlay">
+
+
+    <div class="pdf-window">
+
+
+        <div class="pdf-header">
+
+
+            <div
+                id="pdfTitle"
+                class="pdf-title">
+
+                Lesson
+
+            </div>
+
+
+            <button
+                id="closePdf"
+                class="pdf-close"
+                type="button"
+                aria-label="Close PDF">
+
+                ×
+
+            </button>
+
+
+        </div>
+
+
+        <iframe
+            id="pdfFrame"
+            class="pdf-frame"
+            title="Lesson PDF">
+
+        </iframe>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
 
 <footer class="footer">
 
@@ -212,5 +488,131 @@
 </footer>
 
 
+<script>
+
+
+/* =========================================================
+   PDF ELEMENTS
+   ========================================================= */
+
+const pdfOverlay =
+    document.getElementById("pdfOverlay");
+
+
+const pdfFrame =
+    document.getElementById("pdfFrame");
+
+
+const pdfTitle =
+    document.getElementById("pdfTitle");
+
+
+const closePdf =
+    document.getElementById("closePdf");
+
+
+/* =========================================================
+   OPEN PDF
+   ========================================================= */
+
+function openPdf(
+    pdfUrl,
+    title
+) {
+
+    pdfTitle.textContent =
+        title;
+
+
+    pdfFrame.src =
+        pdfUrl;
+
+
+    pdfOverlay.classList.add(
+        "active"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+}
+
+
+/* =========================================================
+   CLOSE PDF
+   ========================================================= */
+
+function closePdfViewer() {
+
+    pdfOverlay.classList.remove(
+        "active"
+    );
+
+
+    pdfFrame.src =
+        "";
+
+
+    document.body.style.overflow =
+        "";
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
+
+closePdf.addEventListener(
+    "click",
+    closePdfViewer
+);
+
+
+/* =========================================================
+   CLICK OUTSIDE
+   ========================================================= */
+
+pdfOverlay.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target ===
+            pdfOverlay
+        ) {
+
+            closePdfViewer();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   ESCAPE KEY
+   ========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape" &&
+            pdfOverlay.classList.contains("active")
+        ) {
+
+            closePdfViewer();
+
+        }
+
+    }
+);
+
+
+</script>
+
+
 </body>
+
 </html>

@@ -1,7 +1,7 @@
 import nltk
 import re
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 from g2p_en import G2p
 
 
@@ -371,7 +371,50 @@ def vocab():
 
 @app.route('/lessons')
 def lessons():
-    return render_template('lessons.html')
+
+    import os
+
+    lessons_folder = os.path.join(
+        app.root_path,
+        'lessons'
+    )
+
+    lesson_files = []
+
+    if os.path.exists(lessons_folder):
+
+        for filename in os.listdir(lessons_folder):
+
+            if filename.lower().endswith('.pdf'):
+
+                lesson_files.append(filename)
+
+    lesson_files.sort()
+
+    return render_template(
+        'lessons.html',
+        lessons=lesson_files
+    )
+
+
+# ============================================================
+# OPEN LESSON PDF
+# ============================================================
+
+@app.route('/lesson-pdf/<path:filename>')
+def lesson_pdf(filename):
+
+    import os
+
+    lessons_folder = os.path.join(
+        app.root_path,
+        'lessons'
+    )
+
+    return send_from_directory(
+        lessons_folder,
+        filename
+    )
 
 
 # ============================================================

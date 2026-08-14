@@ -1,8 +1,13 @@
+
+
 /* =========================================================
-   FELIPONETICA COURSE — GLOBAL DESIGN SYSTEM
+   FELIPONETICA INGLÉS
+   LIGHT • WARM • WELCOMING DESIGN
    ========================================================= */
 
 :root {
+
+    /* BRAND COLORS */
     --blue: #0028c7;
     --coral: #ff5b41;
     --aqua: #3bf7f3;
@@ -10,18 +15,34 @@
     --cyan: #1ab9de;
     --white: #ffffff;
 
-    --text: #ffffff;
-    --text-soft: rgba(255, 255, 255, 0.72);
-    --text-muted: rgba(255, 255, 255, 0.55);
+    /* LIGHT PALETTE */
+    --sky: #dff5fa;
+    --sky-light: #eefbfc;
 
-    --dark: #06102b;
-    --dark-deep: #030817;
+    --sand: #f7ead5;
+    --sand-light: #fff8ec;
 
-    --glass: rgba(255, 255, 255, 0.07);
-    --glass-hover: rgba(255, 255, 255, 0.11);
-    --border: rgba(255, 255, 255, 0.12);
+    --orange-soft: #ffe0d6;
+    --orange-pale: #fff0ea;
 
-    --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+    /* TEXT */
+    --text: #17305f;
+    --text-dark: #102653;
+    --text-soft: #5d6d8c;
+    --text-light: #7d8ba4;
+
+    /* SURFACES */
+    --card: #ffffff;
+    --card-soft: rgba(255, 255, 255, 0.82);
+
+    --border: rgba(0, 40, 199, 0.10);
+
+    /* SHADOWS */
+    --shadow:
+        0 15px 45px rgba(32, 65, 110, 0.10);
+
+    --shadow-hover:
+        0 22px 55px rgba(32, 65, 110, 0.16);
 }
 
 
@@ -38,6 +59,7 @@ html {
 }
 
 body {
+
     margin: 0;
 
     font-family:
@@ -45,30 +67,31 @@ body {
         Helvetica,
         sans-serif;
 
+    color: var(--text);
+
+    min-height: 100vh;
+
     background:
+
         radial-gradient(
-            circle at 5% 0%,
-            rgba(0, 40, 199, 0.55) 0%,
+            circle at 5% 5%,
+            rgba(59, 247, 243, 0.35),
             transparent 32%
         ),
 
         radial-gradient(
             circle at 95% 15%,
-            rgba(27, 185, 222, 0.25) 0%,
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 85% 90%,
-            rgba(170, 73, 120, 0.30) 0%,
+            rgba(255, 91, 65, 0.18),
             transparent 30%
         ),
 
-        var(--dark-deep);
+        radial-gradient(
+            circle at 90% 75%,
+            rgba(170, 73, 120, 0.20),
+            transparent 32%
+        ),
 
-    color: var(--text);
-
-    min-height: 100vh;
+        #dff5fa;
 }
 
 
@@ -77,51 +100,76 @@ body {
    ========================================================= */
 
 .navbar {
+
     width: 100%;
 
     position: sticky;
     top: 0;
+
     z-index: 1000;
 
-    background: rgba(3, 8, 23, 0.88);
+    background:
+        rgba(255, 255, 255, 0.90);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
 
     border-bottom:
-        1px solid rgba(255, 255, 255, 0.10);
+        1px solid rgba(0, 40, 199, 0.08);
 
-    padding: 16px 5%;
+    padding: 15px 5%;
 }
 
 .nav-container {
+
     max-width: 1300px;
+
     margin: auto;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 30px;
 }
 
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
 .logo {
+
     text-decoration: none;
 
-    color: var(--white);
+    color: var(--blue);
 
     font-size: 24px;
-    font-weight: 800;
+
+    font-weight: 900;
 
     letter-spacing: -1px;
 }
 
 .logo span {
-    color: var(--aqua);
+
+    color: var(--coral);
 }
 
+
+/* =========================================================
+   NAV LINKS
+   ========================================================= */
+
 .nav-links {
+
     display: flex;
+
     align-items: center;
 
     gap: 8px;
@@ -130,28 +178,29 @@ body {
 }
 
 .nav-links a {
+
     text-decoration: none;
 
-    color: var(--text-soft);
+    color: var(--text);
 
     padding: 10px 14px;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
     font-size: 14px;
-    font-weight: 600;
 
-    transition: 0.2s ease;
+    font-weight: 700;
+
+    transition:
+        0.2s ease;
 }
 
 .nav-links a:hover {
-    color: var(--white);
+
+    color: var(--blue);
 
     background:
-        rgba(59, 247, 243, 0.10);
-
-    box-shadow:
-        inset 0 0 0 1px rgba(59, 247, 243, 0.12);
+        var(--sky);
 }
 
 
@@ -160,7 +209,9 @@ body {
    ========================================================= */
 
 .main-container {
+
     width: 90%;
+
     max-width: 1300px;
 
     margin: 0 auto;
@@ -174,14 +225,19 @@ body {
    ========================================================= */
 
 .hero {
+
     text-align: center;
 
-    max-width: 900px;
+    max-width: 950px;
 
     margin: 0 auto 70px;
+
+    padding:
+        20px 0;
 }
 
 .hero h1 {
+
     margin: 0 0 20px;
 
     font-size:
@@ -190,16 +246,20 @@ body {
     line-height: 0.95;
 
     letter-spacing: -4px;
+
+    color: var(--blue);
 }
 
 .hero h1 span {
-    color: var(--aqua);
+
+    color: var(--coral);
 
     text-shadow:
-        0 0 30px rgba(59, 247, 243, 0.20);
+        0 5px 20px rgba(255, 91, 65, 0.15);
 }
 
 .hero p {
+
     margin: 0 auto;
 
     max-width: 700px;
@@ -217,16 +277,19 @@ body {
    ========================================================= */
 
 .page-header {
+
     max-width: 850px;
 
     margin-bottom: 50px;
 }
 
 .page-header .eyebrow {
+
     color: var(--coral);
 
     font-size: 13px;
-    font-weight: 800;
+
+    font-weight: 900;
 
     text-transform: uppercase;
 
@@ -236,6 +299,7 @@ body {
 }
 
 .page-header h1 {
+
     margin: 0 0 18px;
 
     font-size:
@@ -244,9 +308,12 @@ body {
     line-height: 1;
 
     letter-spacing: -3px;
+
+    color: var(--blue);
 }
 
 .page-header p {
+
     margin: 0;
 
     color: var(--text-soft);
@@ -262,6 +329,7 @@ body {
    ========================================================= */
 
 .card-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -274,69 +342,61 @@ body {
 }
 
 .card {
+
     position: relative;
 
     padding: 30px;
 
-    border-radius: 22px;
+    border-radius: 24px;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.10),
-            rgba(255, 255, 255, 0.035)
-        );
+        rgba(255, 255, 255, 0.90);
 
     border:
         1px solid var(--border);
 
-    box-shadow: var(--shadow);
+    box-shadow:
+        var(--shadow);
 
     transition:
         transform 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease,
-        box-shadow 0.25s ease;
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .card:hover {
-    transform: translateY(-6px);
 
-    border-color:
-        rgba(59, 247, 243, 0.45);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.14),
-            rgba(255, 255, 255, 0.05)
-        );
+    transform:
+        translateY(-6px);
 
     box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.35),
-        0 0 30px rgba(0, 40, 199, 0.10);
+        var(--shadow-hover);
+
+    border-color:
+        rgba(0, 40, 199, 0.18);
 }
 
 .card-icon {
-    width: 50px;
-    height: 50px;
+
+    width: 52px;
+
+    height: 52px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    border-radius: 15px;
+    border-radius: 16px;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(0, 40, 199, 0.45),
-            rgba(27, 185, 222, 0.25)
-        );
+        var(--sky);
 
     border:
-        1px solid rgba(59, 247, 243, 0.20);
+        1px solid rgba(27, 185, 222, 0.15);
+
+    color: var(--blue);
 
     font-size: 24px;
 
@@ -345,15 +405,22 @@ body {
 
 .card h2,
 .card h3 {
-    margin: 0 0 12px;
+
+    margin:
+        0 0 12px;
 
     font-size: 23px;
+
+    color:
+        var(--text-dark);
 }
 
 .card p {
+
     margin: 0;
 
-    color: var(--text-soft);
+    color:
+        var(--text-soft);
 
     line-height: 1.65;
 }
@@ -364,27 +431,27 @@ body {
    ========================================================= */
 
 .button {
+
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
-    padding: 13px 20px;
+    padding:
+        13px 21px;
 
-    border-radius: 12px;
+    border-radius: 13px;
 
     background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            var(--cyan)
-        );
+        var(--coral);
 
-    color: var(--white);
+    color:
+        var(--white);
 
     text-decoration: none;
 
-    font-weight: 700;
+    font-weight: 800;
 
     border: none;
 
@@ -393,34 +460,38 @@ body {
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
-        filter 0.2s ease;
+        background 0.2s ease;
 
     margin-top: 22px;
 }
 
 .button:hover {
-    transform: translateY(-2px);
 
-    filter: brightness(1.08);
+    transform:
+        translateY(-2px);
+
+    background:
+        #f04e36;
 
     box-shadow:
-        0 10px 30px rgba(27, 185, 222, 0.25);
+        0 10px 25px
+        rgba(255, 91, 65, 0.22);
 }
 
 .button.secondary {
-    background:
-        rgba(255, 255, 255, 0.08);
 
-    border:
-        1px solid rgba(255, 255, 255, 0.12);
+    background:
+        var(--blue);
 }
 
 .button.secondary:hover {
-    background:
-        rgba(255, 255, 255, 0.13);
 
-    border-color:
-        rgba(59, 247, 243, 0.25);
+    background:
+        #00209f;
+
+    box-shadow:
+        0 10px 25px
+        rgba(0, 40, 199, 0.20);
 }
 
 
@@ -429,28 +500,35 @@ body {
    ========================================================= */
 
 .level-card {
+
     padding: 35px;
 
-    border-radius: 24px;
+    border-radius: 26px;
 
     background:
+
         linear-gradient(
-            145deg,
-            rgba(0, 40, 199, 0.16),
-            rgba(170, 73, 120, 0.10)
+            135deg,
+            rgba(255, 255, 255, 0.95),
+            rgba(247, 234, 213, 0.65)
         );
 
     border:
-        1px solid rgba(255, 255, 255, 0.09);
+        1px solid
+        rgba(170, 73, 120, 0.10);
 
-    box-shadow: var(--shadow);
+    box-shadow:
+        var(--shadow);
 }
 
 .level-number {
-    color: var(--aqua);
+
+    color:
+        var(--coral);
 
     font-size: 13px;
-    font-weight: 800;
+
+    font-weight: 900;
 
     letter-spacing: 2px;
 
@@ -458,32 +536,45 @@ body {
 }
 
 .level-card h2 {
-    margin: 10px 0;
+
+    margin:
+        10px 0;
 
     font-size: 30px;
+
+    color:
+        var(--blue);
 }
 
 .level-card p {
-    color: var(--text-soft);
+
+    color:
+        var(--text-soft);
 
     line-height: 1.6;
 }
 
 .level-list {
+
     padding: 0;
 
-    margin: 25px 0 0;
+    margin:
+        25px 0 0;
 
     list-style: none;
 }
 
 .level-list li {
-    padding: 12px 0;
 
-    color: rgba(255, 255, 255, 0.85);
+    padding:
+        12px 0;
+
+    color:
+        var(--text);
 
     border-top:
-        1px solid rgba(255, 255, 255, 0.07);
+        1px solid
+        rgba(0, 40, 199, 0.08);
 }
 
 
@@ -492,6 +583,7 @@ body {
    ========================================================= */
 
 .lesson-card {
+
     display: flex;
 
     flex-direction: column;
@@ -500,20 +592,26 @@ body {
 }
 
 .lesson-number {
-    color: var(--coral);
+
+    color:
+        var(--coral);
 
     font-size: 13px;
-    font-weight: 800;
+
+    font-weight: 900;
 
     letter-spacing: 1.5px;
 }
 
 .lesson-card h3 {
+
     margin-top: 12px;
 }
 
 .lesson-card .button {
-    margin-top: auto;
+
+    margin-top:
+        auto;
 }
 
 
@@ -522,34 +620,43 @@ body {
    ========================================================= */
 
 .info-section {
+
     margin-top: 70px;
 
     padding: 40px;
 
-    border-radius: 25px;
+    border-radius: 26px;
 
     background:
+
         linear-gradient(
             135deg,
-            rgba(0, 40, 199, 0.10),
-            rgba(170, 73, 120, 0.08)
+            rgba(223, 245, 250, 0.90),
+            rgba(255, 248, 236, 0.90)
         );
 
     border:
-        1px solid rgba(255, 255, 255, 0.08);
+        1px solid
+        rgba(0, 40, 199, 0.08);
 
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.18);
+        var(--shadow);
 }
 
 .info-section h2 {
+
     margin-top: 0;
 
     font-size: 30px;
+
+    color:
+        var(--blue);
 }
 
 .info-section p {
-    color: var(--text-soft);
+
+    color:
+        var(--text-soft);
 
     line-height: 1.8;
 }
@@ -560,26 +667,43 @@ body {
    ========================================================= */
 
 .footer {
-    padding: 35px 5%;
+
+    padding:
+        35px 5%;
 
     border-top:
-        1px solid rgba(255, 255, 255, 0.08);
+        1px solid
+        rgba(0, 40, 199, 0.08);
 
-    text-align: center;
+    text-align:
+        center;
 
-    color: var(--text-muted);
+    color:
+        var(--text-light);
 
-    font-size: 14px;
+    font-size:
+        14px;
+
+    background:
+        rgba(255, 255, 255, 0.55);
 }
 
 .footer a {
-    color: var(--aqua);
 
-    text-decoration: none;
+    color:
+        var(--blue);
+
+    text-decoration:
+        none;
+
+    font-weight:
+        700;
 }
 
 .footer a:hover {
-    color: var(--white);
+
+    color:
+        var(--coral);
 }
 
 
@@ -590,24 +714,35 @@ body {
 @media (max-width: 800px) {
 
     .nav-container {
-        flex-direction: column;
 
-        gap: 15px;
+        flex-direction:
+            column;
+
+        gap:
+            15px;
     }
 
     .nav-links {
-        justify-content: center;
+
+        justify-content:
+            center;
     }
 
     .main-container {
-        padding-top: 45px;
+
+        padding-top:
+            45px;
     }
 
     .hero h1 {
-        letter-spacing: -2px;
+
+        letter-spacing:
+            -2px;
     }
 
     .card {
-        padding: 25px;
+
+        padding:
+            25px;
     }
 }
