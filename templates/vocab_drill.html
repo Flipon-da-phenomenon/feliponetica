@@ -225,7 +225,7 @@ body {
 
     text-align: center;
 
-    margin-bottom: 70px;
+    margin-bottom: 65px;
 }
 
 .brand-icon {
@@ -295,6 +295,244 @@ body {
     font-size: 19px;
 
     line-height: 1.7;
+}
+
+
+/* =========================================================
+   VOCABULARY SETS
+   ========================================================= */
+
+.sets-section {
+
+    margin-bottom: 45px;
+}
+
+.sets-header {
+
+    text-align: center;
+
+    margin-bottom: 28px;
+}
+
+.sets-title {
+
+    margin: 0;
+
+    font-size: 30px;
+
+    font-weight: 900;
+
+    color: var(--blue);
+}
+
+.sets-subtitle {
+
+    margin:
+        10px auto 0;
+
+    max-width: 650px;
+
+    color: var(--text-soft);
+
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   SET CARDS
+   ========================================================= */
+
+.set-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+.set-card {
+
+    position: relative;
+
+    padding: 28px;
+
+    background:
+        rgba(255, 255, 255, 0.94);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 24px;
+
+    box-shadow:
+        var(--shadow);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.set-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        var(--shadow-hover);
+}
+
+.set-number {
+
+    display: inline-block;
+
+    padding:
+        7px 12px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(0, 40, 199, 0.08);
+
+    color:
+        var(--blue);
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+}
+
+.set-card h3 {
+
+    margin:
+        0 0 10px;
+
+    color:
+        var(--text-dark);
+
+    font-size: 24px;
+
+    font-weight: 900;
+}
+
+.set-card p {
+
+    margin:
+        0 0 20px;
+
+    color:
+        var(--text-soft);
+
+    line-height: 1.6;
+
+    font-size: 15px;
+}
+
+.set-words {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-bottom: 22px;
+}
+
+.word-tag {
+
+    padding:
+        6px 10px;
+
+    border-radius: 9px;
+
+    background:
+        var(--sky-light);
+
+    color:
+        var(--blue);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.use-set-btn {
+
+    width: 100%;
+
+    padding:
+        14px 20px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 9px 22px
+        rgba(0, 40, 199, 0.18);
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.use-set-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 13px 28px
+        rgba(0, 40, 199, 0.25);
+}
+
+
+/* =========================================================
+   CUSTOM SET
+   ========================================================= */
+
+.custom-set {
+
+    border:
+        2px dashed
+        rgba(0, 40, 199, 0.18);
+
+    background:
+        rgba(255,255,255,0.65);
+
+    box-shadow: none;
+}
+
+.custom-set:hover {
+
+    box-shadow:
+        var(--shadow);
 }
 
 
@@ -943,6 +1181,11 @@ button:active {
         padding-top: 50px;
     }
 
+    .set-grid {
+
+        grid-template-columns: 1fr;
+    }
+
     #setupArea,
     .game-card {
 
@@ -1059,6 +1302,271 @@ button:active {
     </p>
 
 </div>
+
+
+
+<!-- =========================================================
+     VOCABULARY SETS
+     ========================================================= -->
+
+<section class="sets-section">
+
+    <div class="sets-header">
+
+        <h2 class="sets-title">
+            Vocabulary Sets
+        </h2>
+
+        <p class="sets-subtitle">
+            Choose a vocabulary set to begin.
+            The words will automatically be loaded
+            into the exercise below.
+        </p>
+
+    </div>
+
+
+    <div class="set-grid">
+
+
+        <!-- =================================================
+             SET 1
+             ================================================= -->
+
+        <article class="set-card">
+
+            <div class="set-number">
+                Set 01
+            </div>
+
+            <h3>
+                Basic Adjectives
+            </h3>
+
+            <p>
+                Common adjectives for describing
+                people, things, and situations.
+            </p>
+
+            <div class="set-words">
+
+                <span class="word-tag">
+                    good
+                </span>
+
+                <span class="word-tag">
+                    bad
+                </span>
+
+                <span class="word-tag">
+                    easy
+                </span>
+
+                <span class="word-tag">
+                    difficult
+                </span>
+
+                <span class="word-tag">
+                    big
+                </span>
+
+                <span class="word-tag">
+                    small
+                </span>
+
+            </div>
+
+            <button
+                class="use-set-btn"
+                onclick="loadVocabularySet(0)">
+
+                Use This Set →
+
+            </button>
+
+        </article>
+
+
+
+        <!-- =================================================
+             SET 2
+             ================================================= -->
+
+        <article class="set-card">
+
+            <div class="set-number">
+                Set 02
+            </div>
+
+            <h3>
+                Everyday Vocabulary
+            </h3>
+
+            <p>
+                Useful words that appear constantly
+                in everyday English.
+            </p>
+
+            <div class="set-words">
+
+                <span class="word-tag">
+                    thing
+                </span>
+
+                <span class="word-tag">
+                    way
+                </span>
+
+                <span class="word-tag">
+                    place
+                </span>
+
+                <span class="word-tag">
+                    time
+                </span>
+
+                <span class="word-tag">
+                    people
+                </span>
+
+                <span class="word-tag">
+                    stuff
+                </span>
+
+            </div>
+
+            <button
+                class="use-set-btn"
+                onclick="loadVocabularySet(1)">
+
+                Use This Set →
+
+            </button>
+
+        </article>
+
+
+
+        <!-- =================================================
+             SET 3
+             ================================================= -->
+
+        <article class="set-card">
+
+            <div class="set-number">
+                Set 03
+            </div>
+
+            <h3>
+                Essential Verbs
+            </h3>
+
+            <p>
+                High-frequency verbs used to build
+                everyday English sentences.
+            </p>
+
+            <div class="set-words">
+
+                <span class="word-tag">
+                    be
+                </span>
+
+                <span class="word-tag">
+                    have
+                </span>
+
+                <span class="word-tag">
+                    do
+                </span>
+
+                <span class="word-tag">
+                    go
+                </span>
+
+                <span class="word-tag">
+                    make
+                </span>
+
+                <span class="word-tag">
+                    take
+                </span>
+
+            </div>
+
+            <button
+                class="use-set-btn"
+                onclick="loadVocabularySet(2)">
+
+                Use This Set →
+
+            </button>
+
+        </article>
+
+
+
+        <!-- =================================================
+             SET 4
+             ================================================= -->
+
+        <article class="set-card">
+
+            <div class="set-number">
+                Set 04
+            </div>
+
+            <h3>
+                Work Vocabulary
+            </h3>
+
+            <p>
+                Practical vocabulary for talking about
+                work, jobs, and daily responsibilities.
+            </p>
+
+            <div class="set-words">
+
+                <span class="word-tag">
+                    job
+                </span>
+
+                <span class="word-tag">
+                    shift
+                </span>
+
+                <span class="word-tag">
+                    worker
+                </span>
+
+                <span class="word-tag">
+                    manager
+                </span>
+
+                <span class="word-tag">
+                    meeting
+                </span>
+
+                <span class="word-tag">
+                    schedule
+                </span>
+
+            </div>
+
+            <button
+                class="use-set-btn"
+                onclick="loadVocabularySet(3)">
+
+                Use This Set →
+
+            </button>
+
+        </article>
+
+
+    </div>
+
+</section>
 
 
 
@@ -1252,6 +1760,156 @@ strong = fuerte</textarea>
 
 
 <script>
+
+
+/* =========================================================
+   PRE-MADE VOCABULARY SETS
+   =========================================================
+
+   ADD MORE SETS HERE.
+
+   Each set has:
+
+   name
+   description
+   words
+
+   The words are automatically sent
+   into the vocabulary exercise.
+   ========================================================= */
+
+const vocabularySets = [
+
+    {
+
+        name: "Basic Adjectives",
+
+        description:
+            "Common adjectives for describing people, things, and situations.",
+
+        words: [
+
+            "good = bueno",
+            "bad = malo",
+            "easy = fácil",
+            "difficult = difícil",
+            "big = grande",
+            "small = pequeño"
+
+        ]
+
+    },
+
+
+    {
+
+        name: "Everyday Vocabulary",
+
+        description:
+            "Useful words that appear constantly in everyday English.",
+
+        words: [
+
+            "thing = cosa",
+            "way = manera",
+            "place = lugar",
+            "time = tiempo",
+            "people = gente",
+            "stuff = cosas"
+
+        ]
+
+    },
+
+
+    {
+
+        name: "Essential Verbs",
+
+        description:
+            "High-frequency verbs used to build everyday English sentences.",
+
+        words: [
+
+            "be = ser / estar",
+            "have = tener",
+            "do = hacer",
+            "go = ir",
+            "make = hacer / crear",
+            "take = tomar / llevar"
+
+        ]
+
+    },
+
+
+    {
+
+        name: "Work Vocabulary",
+
+        description:
+            "Practical vocabulary for talking about work, jobs, and daily responsibilities.",
+
+        words: [
+
+            "job = trabajo",
+            "shift = turno",
+            "worker = trabajador",
+            "manager = gerente",
+            "meeting = reunión",
+            "schedule = horario"
+
+        ]
+
+    }
+
+];
+
+
+/* =========================================================
+   LOAD VOCABULARY SET
+   ========================================================= */
+
+function loadVocabularySet(setNumber) {
+
+    const selectedSet =
+        vocabularySets[setNumber];
+
+
+    if (!selectedSet) {
+
+        return;
+
+    }
+
+
+    /*
+       Put the selected vocabulary
+       into the textarea.
+    */
+
+    document.getElementById(
+        "vocabInput"
+    ).value =
+        selectedSet.words.join("\n");
+
+
+    /*
+       Scroll down to the setup area
+       so the student can see the words.
+    */
+
+    document.getElementById(
+        "setupArea"
+    ).scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "start"
+
+    });
+
+}
 
 
 /* =========================================================
@@ -1458,7 +2116,6 @@ startBtn.addEventListener(
 
 function renderScreen() {
 
-
     if (reverseMode) {
 
         renderReverse();
@@ -1469,8 +2126,6 @@ function renderScreen() {
 
     }
 
-
-    /* Restart animation */
 
     wordDisplay.style.animation =
         "none";
@@ -1487,7 +2142,6 @@ function renderScreen() {
    ========================================================= */
 
 function renderForward() {
-
 
     phaseLabel.textContent =
         "English → Spanish";
@@ -1513,9 +2167,6 @@ function renderForward() {
 
     if (!translationVisible) {
 
-
-        /* English only */
-
         wordDisplay.textContent =
             pair.english;
 
@@ -1524,11 +2175,7 @@ function renderForward() {
             "hidden"
         );
 
-
     } else {
-
-
-        /* English + Spanish */
 
         wordDisplay.textContent =
             pair.english +
@@ -1553,7 +2200,6 @@ function renderForward() {
    ========================================================= */
 
 function updateForwardProgress() {
-
 
     const total =
         vocabulary.length;
@@ -1596,7 +2242,6 @@ function updateForwardProgress() {
 
 function renderReverse() {
 
-
     phaseLabel.textContent =
         "Spanish → English";
 
@@ -1630,9 +2275,6 @@ function renderReverse() {
 
     if (!translationVisible) {
 
-
-        /* Spanish only */
-
         wordDisplay.textContent =
             pair.spanish;
 
@@ -1641,11 +2283,7 @@ function renderReverse() {
             "hidden"
         );
 
-
     } else {
-
-
-        /* Spanish + English */
 
         wordDisplay.textContent =
             pair.spanish +
@@ -1670,7 +2308,6 @@ function renderReverse() {
    ========================================================= */
 
 function updateReverseProgress() {
-
 
     const total =
         vocabulary.length;
@@ -1718,11 +2355,6 @@ goBtn.addEventListener(
     () => {
 
 
-        /* =================================================
-           STEP 1
-           Show translation.
-           ================================================= */
-
         if (!translationVisible) {
 
             translationVisible = true;
@@ -1733,10 +2365,6 @@ goBtn.addEventListener(
         }
 
 
-        /* =================================================
-           REVERSE MODE
-           ================================================= */
-
         if (reverseMode) {
 
             advanceReverse();
@@ -1745,10 +2373,6 @@ goBtn.addEventListener(
 
         }
 
-
-        /* =================================================
-           FORWARD MODE
-           ================================================= */
 
         advanceForward();
 
@@ -1762,13 +2386,8 @@ goBtn.addEventListener(
 
 function advanceForward() {
 
-
     currentWordIndex++;
 
-
-    /* -----------------------------------------
-       More words remain in this round
-       ----------------------------------------- */
 
     if (
         currentWordIndex <
@@ -1784,16 +2403,8 @@ function advanceForward() {
     }
 
 
-    /* -----------------------------------------
-       Forward round complete
-       ----------------------------------------- */
-
     currentRound++;
 
-
-    /* -----------------------------------------
-       Forward completely finished
-       ----------------------------------------- */
 
     if (
         currentRound >
@@ -1806,10 +2417,6 @@ function advanceForward() {
 
     }
 
-
-    /* -----------------------------------------
-       New forward round
-       ----------------------------------------- */
 
     currentWordIndex = 0;
 
@@ -1826,24 +2433,15 @@ function advanceForward() {
 
 function beginReverse() {
 
-
     reverseMode = true;
 
-
     reverseRound = 1;
-
-
-    /*
-       Start with the LAST word.
-    */
 
     reverseWordIndex =
         vocabulary.length - 1;
 
-
     translationVisible =
         false;
-
 
     renderScreen();
 }
@@ -1855,19 +2453,8 @@ function beginReverse() {
 
 function advanceReverse() {
 
-
-    /*
-       Move one word backward.
-    */
-
     reverseWordIndex--;
 
-
-    /*
-       If there are still words
-       remaining in this reverse round,
-       continue.
-    */
 
     const wordsUsed =
         vocabulary.length -
@@ -1879,11 +2466,6 @@ function advanceReverse() {
         reverseRound
     ) {
 
-        /*
-           This means the round
-           is still going.
-        */
-
         translationVisible =
             false;
 
@@ -1894,16 +2476,8 @@ function advanceReverse() {
     }
 
 
-    /*
-       Reverse round completed.
-    */
-
     reverseRound++;
 
-
-    /*
-       All reverse rounds complete.
-    */
 
     if (
         reverseRound >
@@ -1916,11 +2490,6 @@ function advanceReverse() {
 
     }
 
-
-    /*
-       Start the new reverse round
-       from the LAST word again.
-    */
 
     reverseWordIndex =
         vocabulary.length - 1;
@@ -1940,13 +2509,6 @@ repeatBtn.addEventListener(
     "click",
     () => {
 
-        /*
-           Repeat does NOT advance.
-
-           It simply returns to the
-           same word without its translation.
-        */
-
         translationVisible =
             false;
 
@@ -1961,7 +2523,6 @@ repeatBtn.addEventListener(
    ========================================================= */
 
 function showFinished() {
-
 
     roundInfo.innerHTML =
         '<span class="round-dot"></span>' +
