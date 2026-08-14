@@ -94,27 +94,227 @@ def convert_to_feliponetica(text):
 
     phonemes = g2p(text)
 
+    # =====================================================
+    # WORD-SPECIFIC PRONUNCIATION CORRECTIONS
+    # =====================================================
+
+    # "with" uses the voiceless TH sound in Feliponetica
+    # with → W IH TH
+    for i, phone in enumerate(phonemes):
+
+        clean_phone = re.sub(r"\d", "", phone)
+
+        if clean_phone == "DH":
+
+            previous_1 = ""
+            previous_2 = ""
+
+            if i > 0:
+                previous_1 = re.sub(r"\d", "", phonemes[i - 1])
+
+            if i > 1:
+                previous_2 = re.sub(r"\d", "", phonemes[i - 2])
+
+            if previous_2 == "W" and previous_1 == "IH":
+                phonemes[i] = "TH"
+
     converted = []
 
-    for phone in phonemes:
+    i = 0
 
-        # Keep spaces
+    while i < len(phonemes):
+
+        phone = phonemes[i]
+
+        # =================================================
+        # KEEP SPACES
+        # =================================================
+
         if phone == " ":
             converted.append(" ")
+            i += 1
             continue
 
-        # Keep punctuation
+        # =================================================
+        # KEEP PUNCTUATION
+        # =================================================
+
         if not re.match(r"^[A-Z]+[0-2]?$", phone):
             converted.append(phone)
+            i += 1
             continue
 
         # Remove stress number
         phone = re.sub(r"\d", "", phone)
 
-        # Convert CMU phoneme
+        # Get next phoneme
+        next_phone = ""
+
+        if i + 1 < len(phonemes):
+            next_phone = re.sub(
+                r"\d", "",
+                phonemes[i + 1]
+            )
+
+        # Get phoneme after next
+        after_next_phone = ""
+
+        if i + 2 < len(phonemes):
+            after_next_phone = re.sub(
+                r"\d", "",
+                phonemes[i + 2]
+            )
+
+                # =================================================
+        # Y + UW + AH + L
+        # =================================================
+
+        # fuel → fiuol
+
+        if (
+            phone == "Y"
+            and next_phone == "UW"
+            and after_next_phone == "AH"
+        ):
+
+            if i + 3 < len(phonemes):
+                after_ah_phone = re.sub(
+                    r"\d", "",
+                    phonemes[i + 3]
+                )
+
+                if after_ah_phone == "L":
+                    converted.append("iuol")
+                    i += 4
+                    continue
+
+
+        # =================================================
+        # Y + UW + L
+        # =================================================
+        #
+        # mule → miuol
+        # fuel → fiuol
+        #
+        # Y UW L → iuol
+
+        if (
+            phone == "Y"
+            and next_phone == "UW"
+            and after_next_phone == "L"
+        ):
+
+            converted.append("iuol")
+
+            i += 3
+            continue
+
+
+        # =================================================
+        # Y + UW
+        # =================================================
+        #
+        # few → fiu
+        # future → fiuchr
+        # fusion → fiu...
+
+        if phone == "Y" and next_phone == "UW":
+
+            converted.append("iu")
+
+            i += 2
+            continue
+
+        # =================================================
+        # AO + R
+        # =================================================
+        #
+        # north
+        # core
+        # bore
+        # store
+        # chore
+        # lore
+        # more
+        #
+        # AO R → o r
+
+        if phone == "AO" and next_phone == "R":
+
+            converted.append("or")
+
+            i += 2
+            continue
+
+        # =================================================
+        # NG + K
+        # =================================================
+        #
+        # think
+        # thank
+        # drink
+        # bank
+        #
+        # NG K → n k
+
+        if phone == "NG" and next_phone == "K":
+
+            converted.append("nk")
+
+            i += 2
+            continue
+
+        # =================================================
+        # FINAL L RULE
+        # =================================================
+        #
+        # UW + L → uol
+        # IY + L → iol
+        # EY + L → eiol
+        # AY + L → aiol
+        # OY + L → oiol
+        #
+        # Examples:
+        #
+        # full   → fuol
+        # feel   → fiol
+        # school → skuol
+        # male   → meiol
+        # tail   → teiol
+        # oil    → oiol
+        #
+        # IH + L is NOT changed.
+        #
+        # fill → fiʰl
+        # hill → hiʰl
+
+        if (
+            phone in ["UW", "IY", "EY", "AY", "OY"]
+            and next_phone == "L"
+        ):
+
+            vowel = CMU_TO_FELIPONETICA.get(
+                phone,
+                phone
+            )
+
+            converted.append(vowel + "ol")
+
+            i += 2
+            continue
+
+        # =================================================
+        # NORMAL CMU → FELIPONETICA
+        # =================================================
+
         converted.append(
-            CMU_TO_FELIPONETICA.get(phone, phone)
+            CMU_TO_FELIPONETICA.get(
+                phone,
+                phone
+            )
         )
+
+        i += 1
 
     return "".join(converted)
 
