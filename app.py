@@ -223,6 +223,7 @@ def convert_to_feliponetica(text):
             converted.append("iu")
 
             i += 2
+            
             continue
 
         # =================================================
