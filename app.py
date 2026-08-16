@@ -1,7 +1,7 @@
 import nltk
 import re
 
-from flask import Flask, render_template, request, send_from_directory
+from flask import Flask, render_template, request, send_from_directory, abort
 from g2p_en import G2p
 
 
@@ -357,12 +357,94 @@ def feliponetica():
 
 
 # ============================================================
-# VOCABULARY DRILL
+# VOCABULARY SETS
+# ============================================================
+
+VOCABULARY_SETS = {
+
+    "everyday-english": {
+        "title": "Everyday English",
+        "description": "Useful English vocabulary for everyday situations.",
+        "words": [
+            "lucky = afortunado",
+            "unusual = no común",
+            "silly = tonto",
+            "strong = fuerte",
+            "easy = fácil",
+            "difficult = difícil",
+            "busy = ocupado",
+            "quiet = tranquilo",
+            "careful = cuidadoso",
+            "important = importante"
+        ]
+    },
+
+    "essential-verbs": {
+        "title": "Essential Verbs",
+        "description": "Some of the most useful verbs in English.",
+        "words": [
+            "be = ser / estar",
+            "have = tener",
+            "do = hacer",
+            "go = ir",
+            "come = venir",
+            "make = hacer / crear",
+            "take = tomar / llevar",
+            "give = dar",
+            "get = obtener / conseguir",
+            "know = saber / conocer"
+        ]
+    },
+
+    "work": {
+        "title": "Work",
+        "description": "Useful vocabulary for talking about work and jobs.",
+        "words": [
+            "job = trabajo",
+            "worker = trabajador",
+            "boss = jefe",
+            "office = oficina",
+            "factory = fábrica",
+            "meeting = reunión",
+            "schedule = horario",
+            "shift = turno",
+            "break = descanso",
+            "salary = salario"
+        ]
+    }
+
+}
+
+
+# ============================================================
+# VOCABULARY PAGE
 # ============================================================
 
 @app.route('/vocab_drill')
 def vocab():
-    return render_template('vocab_drill.html')
+
+    return render_template(
+        'vocab.html',
+        vocabulary_sets=VOCABULARY_SETS
+    )
+
+
+# ============================================================
+# START VOCABULARY SET
+# ============================================================
+
+@app.route('/vocab_drill/<set_id>')
+def vocabulary_drill(set_id):
+
+    if set_id not in VOCABULARY_SETS:
+        abort(404)
+
+    vocabulary_set = VOCABULARY_SETS[set_id]
+
+    return render_template(
+        'vocab_drill.html',
+        vocabulary_set=vocabulary_set
+    )
 
 
 # ============================================================
